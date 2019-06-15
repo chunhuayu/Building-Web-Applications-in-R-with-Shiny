@@ -72,3 +72,15 @@ server <- function(input, output) {
 }
 # Create a Shiny app object
 shinyApp(ui = ui, server = server)
+
+
+
+?dateRangeInput()
+# Create Date Range Input
+# Creates a pair of text inputs which, when clicked on, bring up calendars that the user can click on to select dates.
+
+# Usage
+dateRangeInput(inputId, label, start = NULL, end = NULL, min = NULL,
+  max = NULL, format = "yyyy-mm-dd", startview = "month",
+  weekstart = 0, language = "en", separator = " to ", width = NULL,
+  autoclose = TRUE)
