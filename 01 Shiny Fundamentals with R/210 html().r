@@ -42,7 +42,6 @@ ui <- fluidPage(
     mainPanel(
       plotOutput(outputId = "scatterplot"),
       htmlOutput(outputId = "avgs"), # avg of x
-      htmlOutput(outputId = "avgs"), # avg of y
       verbatimTextOutput(outputId = "lmoutput") # regression output
     )
   )
@@ -56,15 +55,15 @@ server <- function(input, output) {
     ggplot(data = movies, aes_string(x = input$x, y = input$y)) +
       geom_point()
   })
-
+  
   # Calculate averages
-  output$avg_x <- renderText({
-    avgs <- movies %>% pull(input$x) %>% mean() %>% round(2)
-    avgs <- movies %>% pull(input$y) %>% mean() %>% round(2)
+  output$avgs <- renderUI({
+    avg_x <- movies %>% pull(input$x) %>% mean() %>% round(2)
+    avg_y <- movies %>% pull(input$y) %>% mean() %>% round(2)
     HTML(
-      paste("Average", input$x, "=", avgs),
+      paste("Average", input$x, "=", avg_x),
       "<br/>",
-      paste("Average", input$y, "=", avgs)
+      paste("Average", input$y, "=", avg_y)
     )
   })
   
