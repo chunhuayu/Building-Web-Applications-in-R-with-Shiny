@@ -38,13 +38,13 @@ ui <- fluidPage(
     sidebarPanel(
       
       # Text instructions
-      HTML(paste("Enter a value between 1 and", "651"))
+      HTML(paste("Enter a value between 1 and", n_total)),
       
       # Numeric input for sample size
       numericInput(inputId = "n",
-                   label = "Sample size:",
+                   label = "Sample size:",min=1,max=n_total,
                    value = 30,
-                   step = 1,min=1,max= n_total)
+                   step = 1)
       
     ),
     
